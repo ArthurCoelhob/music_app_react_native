@@ -1,0 +1,1 @@
+## Funções que tratam os dados
