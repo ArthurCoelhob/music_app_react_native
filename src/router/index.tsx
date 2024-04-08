@@ -1,84 +1,37 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { DefaultTheme, NavigationContainer, createNavigationContainerRef } from '@react-navigation/native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { MenuBottom } from './MenuBottom';
+import { CreateMusic } from '../screens/musicas/create';
+import Store from '../screens/playlists/store';
 
-import { Home } from '../screens/home'
-import { Playlist } from '../screens/playlists'
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-
-export type RootTabParamList = {
-  Home: undefined
-  Playlist: undefined
-  // Usuario: { id: string }
+export type RouteParamList = {
+  Root: undefined
+  CreateMusic: undefined
+  StorePlayList: { id: string  } 
 }
 
-const Tab = createBottomTabNavigator<RootTabParamList>()
+const Stack = createNativeStackNavigator<RouteParamList>();
 
-const colorActive = '#12a755'
-
-const Mytheme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: colorActive,
-    background: "#d6d6d6"
-  }
-}
-
-export const Routes = () => {
+export default function Routes() {
   return (
-    <>
-      <NavigationContainer theme={Mytheme}>
-        <Tab.Navigator
-          initialRouteName="Home"
-          screenOptions={{
-            tabBarActiveTintColor: '#6F6989',
-          }}
-        >
-          <Tab.Screen
-            name="Home"
-            component={Home}
-            options={{
-              tabBarLabel: 'Home',
-              tabBarActiveTintColor: colorActive,
-              tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons name="home" color={color} size={20} />
-              ),
-            }}
-          />
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Root"
+          component={MenuBottom}
+          options={{ headerShown: false }}
+        />
+        
+        <Stack.Screen name="CreateMusic" component={CreateMusic} />
 
-          <Tab.Screen
-            name="Playlist"
-            component={Playlist}
-            options={{
-              tabBarLabel: 'Playlist',
-              tabBarActiveTintColor: colorActive,
-              tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons name="home" color={color} size={20} />
-              ),
-            }}
-          />
-          
-          {/* <Tab.Screen
-            listeners={({ navigation }) => ({
-              focus: () => {
-                navigation.setParams({ id: undefined });
-              },
-            })}
-            name="Usuario"
-            component={Usuario}
-            options={{
-              tabBarLabel: 'Home',
-              tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons name="account-multiple-plus" color={color} size={20} />
-              ),
-            }}
-          /> */}
-        </Tab.Navigator>
+        <Stack.Screen 
+          name="StorePlayList" 
+          component={Store}
+        />
 
-      </NavigationContainer>
-    </>
-  )
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 

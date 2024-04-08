@@ -1,4 +1,5 @@
-import { View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList, Button } from 'react-native'
+import { styles } from './styles';
 
 
 type Props = {
@@ -8,8 +9,22 @@ type Props = {
 export const Playlist = ({ navigation }: Props) => {
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-     <Text>Playlist</Text>
-    </View>
+    <>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.title}>Gerencie suas Playlists</Text>
+          <Button
+            title="Criar Playlist"
+            onPress={() => navigation.navigate('StorePlayList', {id:'louback test'})}
+          />
+        </View>
+        
+        <View style={styles.content}>
+          <Text>content</Text>
+        </View>
+
+        
+      </View>
+    </>
   )
 }
