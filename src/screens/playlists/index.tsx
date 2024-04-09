@@ -15,7 +15,7 @@ export const Playlist = ({ navigation }: Props) => {
           <Text style={styles.title}>Gerencie suas Playlists</Text>
           <Button
             title="Criar Playlist"
-            onPress={() => navigation.navigate('StorePlayList', {id:'louback test'})}
+            onPress={() => navigation.navigate('StorePlayList', {id: undefined })}
           />
         </View>
         

@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MenuBottom } from './MenuBottom';
 import { CreateMusic } from '../screens/musicas/create';
-import Store from '../screens/playlists/store';
+import { Store } from '../screens/playlists/store';
 
 export type RouteParamList = {
   Root: undefined
@@ -28,6 +28,9 @@ export default function Routes() {
         <Stack.Screen 
           name="StorePlayList" 
           component={Store}
+          options={{
+            title: 'Criar Playlists',
+          }}
         />
 
       </Stack.Navigator>
