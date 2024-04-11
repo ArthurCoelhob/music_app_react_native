@@ -7,6 +7,8 @@ import { Home } from '../screens/home'
 import { Playlist } from '../screens/playlists'
 import { Musica } from '../screens/musicas'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { tokens } from '../styles/global'
+import { headerCustom } from  './headerCustom'
 
 export type MenuBottomParamList = {
   Home: undefined
@@ -18,16 +20,6 @@ export type MenuBottomParamList = {
 
 const Tab = createBottomTabNavigator<MenuBottomParamList>()
 
-const colorActive = '#12a755'
-
-const Mytheme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: colorActive,
-    background: "#d6d6d6"
-  }
-}
 
 export const MenuBottom = () => {
   return (
@@ -35,14 +27,23 @@ export const MenuBottom = () => {
       initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: '#6F6989',
-      }}
-    >
+        tabBarStyle: {
+          paddingHorizontal: 5,
+          paddingTop: 0,
+          backgroundColor: tokens.bgColorDark,
+          position: 'absolute',
+          borderTopWidth: 0,
+        },
+        ...headerCustom,
+      }
+    }>
+
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
           tabBarLabel: 'Home',
-          tabBarActiveTintColor: colorActive,
+          tabBarActiveTintColor: tokens.primaryColor,
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={20} />
           ),
@@ -54,7 +55,7 @@ export const MenuBottom = () => {
         component={Playlist}
         options={{
           tabBarLabel: 'Playlist',
-          tabBarActiveTintColor: colorActive,
+          tabBarActiveTintColor: tokens.primaryColor,
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={20} />
           ),
@@ -71,7 +72,7 @@ export const MenuBottom = () => {
         component={Musica}
         options={{
           tabBarLabel: 'Ver Musica',
-          tabBarActiveTintColor: colorActive,
+          tabBarActiveTintColor: tokens.primaryColor,
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="account-multiple-plus" color={color} size={20} />
           ),

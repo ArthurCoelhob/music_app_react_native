@@ -1,0 +1,16 @@
+Home: Hotspot(?)
+PlayLists
+	lista de playlists
+	playlist
+Buscar Musicas
+	Listar Musicas salvas em listas
+	Criar/excluir/editar listas
+	
+	Campos (form):
+		Nome da Lista
+		Descrição
+		Genero
+		Tags
+		musicas
+			- Buscar via api
+			- salvar lista de musicId
