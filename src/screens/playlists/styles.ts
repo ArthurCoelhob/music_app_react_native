@@ -5,8 +5,6 @@ export const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
     },
     header: {
       flex: 1,
@@ -37,7 +35,8 @@ export const styles = StyleSheet.create({
     content:{
       flex: 15,
       padding: 15,
-      paddingBottom: 150
+      paddingBottom: 150,
+      // backgroundColor: '#022c22'
     },
     title: {
       flex: 2,
@@ -46,7 +45,19 @@ export const styles = StyleSheet.create({
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+    },
+    buttonEdit: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: 'auto',
+      borderRadius: 3,
+      backgroundColor: tokens.bgColorDark,
+      padding: 8,
+      marginHorizontal: 5
+    },
+    wrapperForm: {
+      padding: 15,
     }
-
 }
 );

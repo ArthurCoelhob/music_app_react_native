@@ -1,6 +1,11 @@
 import { View, Text,  } from 'react-native'
 import { styles } from './styles';
 import { Button } from '../../components/Button';
+import { getAllPlaylists } from '../../model/PlaylistModel';
+import { useCallback, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
+import { PlaylistItem } from '../../components/PlaylistItem';
+import { FormDataProps } from '../../controller/PlayListController';
 
 
 type Props = {
@@ -8,6 +13,12 @@ type Props = {
 }
 
 export const Playlist = ({ navigation }: Props) => {
+  const [playlists, setPlaylists] = useState<FormDataProps[]>([])
+  const [reload, setReLoad] = useState(0)
+
+  useFocusEffect(useCallback(() => {
+    getAllPlaylists().then(data => setPlaylists(data))
+  },[reload]))
 
   return (
     <>
@@ -23,7 +34,11 @@ export const Playlist = ({ navigation }: Props) => {
         </View>
         
         <View style={styles.content}>
-          <Text>content</Text>
+
+          {playlists.map((playlist, i) => {
+            return <PlaylistItem navigation={navigation} playlist={playlist} key={playlist.id} callback={() => setReLoad(reload + 1)} />
+          })}
+          
         </View>
 
         
