@@ -26,7 +26,8 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
   },
   containerView: {
-    padding: 20
+    padding: 20,
+    paddingBottom: 40
   },
   viewTitle: {
     fontSize: 22,
@@ -38,6 +39,7 @@ export const styles = StyleSheet.create({
   },
   viewContent: {
     fontSize: 18,
-    lineHeight: 24
+    lineHeight: 24,
+    paddingBottom: 50
   }
 })

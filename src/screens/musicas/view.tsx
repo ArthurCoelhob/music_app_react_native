@@ -27,9 +27,6 @@ export const VerMusica = ({ navigation, route }: VerMusicaProps) => {
     })
   },[])
 
-  console.log("content =============")
-  console.log(content)
-
   return (
     <KeyboardAwareScrollView style={styles.containerView}>
     

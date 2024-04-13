@@ -1,22 +1,19 @@
-## Roteiro:
-- Home: 
-- PlayLists
-- Buscar Musicas  
-  Listar Musicas
-  Salvar musicas em listas  
-  Criar/excluir/editar listas  
-  Campos (form): 
-    - Nome da Lista
-    -	Descrição
-    - Genero
-    - Tags
+# Vagalume Clone
 
-# TODO
-- Detalhe Musica
-- Detalhe Playlist
-  - remover musica da Playlist
-- Home
-  - Seja bem vindo
-  - Logo Vagalume
-    - Ver Musica
-    - Ver Playlist
+### Rodando o projeto
+    ** Para rodar o projeto, use Node na versão >=18
+
+Clone o repositório e rode o comando `yarn` no terminal (ou npm i),
+para instalar as dependencias.
+
+Para rodar o projeto, use o comando `yarn start` (npm run start).
+
+Baixe o app Expo go no celular e escanee o QR Code.
+
+### Demonstração em vídeo
+
+Olha a pasta `demonstracao` para ver o video do app rodando.
+
+
+#### TODO
+- remover musica da Playlist
