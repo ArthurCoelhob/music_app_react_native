@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { Home } from '../screens/home'
 import { Playlist } from '../screens/playlists'
-import { Musica } from '../screens/musicas'
+import { Musicas } from '../screens/musicas'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { tokens } from '../styles/global'
 import { headerCustom } from  './headerCustom'
@@ -13,7 +13,7 @@ import { headerCustom } from  './headerCustom'
 export type MenuBottomParamList = {
   Home: undefined
   Playlist: undefined
-  Musica: { id: string }
+  Musicas: { id: string }
   CreateMusic: undefined
   StorePlayList: { id: string  } 
 }
@@ -47,6 +47,7 @@ export const MenuBottom = () => {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={20} />
           ),
+          headerShown: false
         }}
       />
 
@@ -57,7 +58,7 @@ export const MenuBottom = () => {
           tabBarLabel: 'Playlist',
           tabBarActiveTintColor: tokens.primaryColor,
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={color} size={20} />
+            <MaterialCommunityIcons name="view-list" color={color} size={20} />
           ),
         }}
       />
@@ -68,13 +69,13 @@ export const MenuBottom = () => {
             navigation.setParams({ id: undefined });
           },
         })}
-        name="Musica"
-        component={Musica}
+        name="Musicas"
+        component={Musicas}
         options={{
           tabBarLabel: 'Ver Musica',
           tabBarActiveTintColor: tokens.primaryColor,
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account-multiple-plus" color={color} size={20} />
+            <MaterialCommunityIcons name="music" color={color} size={20} />
           ),
         }}
       />

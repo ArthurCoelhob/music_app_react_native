@@ -13,4 +13,5 @@ export const tokens = {
   secundaryColor: '#068',
   bgColor: '#f1f1f1',
   bgColorDark: '#070904',
+  bgColorList: '#022c22'
 }

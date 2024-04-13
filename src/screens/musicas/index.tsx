@@ -1,22 +1,59 @@
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import { View, Text, FlatList, Button } from 'react-native'
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { MenuBottomParamList } from '../../router/MenuBottom';
+import { View, Text, FlatList, Button, TextInputComponent } from 'react-native'
+import { useCallback, useEffect, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
+import { MusicController } from '../../controller/MusicController';
+import { CardMusicItem } from '../../components/CardMusicItem';
+import { styles } from './styles';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { SearchInput } from '../../components/SearchInput';
+import { getAllPlaylists } from '../../model/PlaylistModel';
+import { FormDataProps } from '../../controller/PlayListController';
 
+type MusicasProps = {
+  navigation: any
+}
 
-type MusicaProps = NativeStackScreenProps<MenuBottomParamList, 'Musica'>;
+export interface MusicDoc {
+  id: string
+  langID: number
+  url: string
+  title: string
+  band: string
+}
 
-export const Musica = ({ navigation, route }: MusicaProps) => {
-  const id = route?.params?.id
+export const Musicas = ({ navigation }: MusicasProps) => {
+  const [listMusic, setListMusic] = useState<MusicDoc[]>([])
+  const [playlists, setPlaylists] = useState<FormDataProps[]>([])
   
+  useFocusEffect(useCallback(() => {
+    getAllPlaylists().then(list => setPlaylists(list))
+    setListMusic([])
+  },[]))
+
+  const handleSearch = (val: string) => {
+    MusicController.searchMusic(val).then((data: MusicDoc[]) =>{
+      setListMusic(data)
+    })
+  }
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-     <Text>Musicas id:{id}</Text>
-     <Button
-        title="editar Musicas"
-        onPress={() => navigation.navigate('CreateMusic')}
-      />
-    </View>
+    <KeyboardAwareScrollView style={styles.content}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+            <Text style={styles.title}>Buscar musicas</Text>
+            
+            <SearchInput onpressFn={handleSearch}/>
+        </View>
+          
+        <View style={styles.content}>
+          {
+            listMusic.map(item=> {
+              return <CardMusicItem music={item} navigation={navigation} key={item.id} playlists={playlists}/>
+            })
+          }
+            
+        </View>
+      </View>
+    </KeyboardAwareScrollView>
   )
 }

@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
       flex: 15,
       padding: 15,
       paddingBottom: 150,
-      // backgroundColor: '#022c22'
+      backgroundColor: tokens.bgColorList
     },
     title: {
       flex: 2,
@@ -58,6 +58,17 @@ export const styles = StyleSheet.create({
     },
     wrapperForm: {
       padding: 15,
+    },
+    nocontent:{
+      paddingTop: 50,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    nocontentText: {
+      textAlign: 'center',
+      fontSize: 18,
+      fontWeight: '600'
     }
 }
 );

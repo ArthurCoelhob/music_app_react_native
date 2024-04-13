@@ -1,20 +1,16 @@
 import uuid from 'react-native-uuid'
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import Toast from 'react-native-toast-message'
-import { getAllPlaylists, storePlaylists } from '../model/PlaylistModel'
+import { findPlaylistStorage, getAllPlaylists, storePlaylists } from '../model/PlaylistModel'
+import { MusicDoc } from '../screens/musicas'
 
-
-export type StoreMusics = {
-  musicId: string
-  musicName: string
-}
 
 export type FormDataProps = {
   id:string
   nomeLista: string
   genero?: string
   descricao?: string
-  musicas?: StoreMusics[]
+  musicas?: MusicDoc[]
 }
 
 export class PlaylistController {
@@ -123,6 +119,39 @@ export class PlaylistController {
       }
     }
 
+  }
+
+  static async addMusicPlaylist(music: MusicDoc, idList: string) {
+    
+    const playlists : FormDataProps[] = await getAllPlaylists()
+    const keyIndex = playlists.findIndex(item => item.id === idList)
+
+    try {
+      playlists[keyIndex].musicas?.push(music)
+      
+      await storePlaylists(playlists)
+      
+      Toast.show({
+        type: 'success',
+        text1: 'Musica adicionada com sucesso!'
+      });
+
+      return  {
+        status: 'success',
+        mensagem: 'ok'
+      }
+    } catch (error) {
+      Toast.show({
+        type: 'error',
+        text1: 'Erro ao atualizar cadastro, ID não encontrado!'
+      });
+
+      return {
+        status: 'error',
+        mensagem: 'ID não encontrado'
+      }
+    }
+    
   }
 
 }

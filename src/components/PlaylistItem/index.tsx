@@ -53,8 +53,8 @@ export const PlaylistItem = ( { playlist, navigation, callback} : PlaylistItemPr
 
       <View style={styles.text}>
         <Text style={styles.name}>{playlist.nomeLista}</Text>
-        <Text>{playlist.genero}</Text>
-        <Text>{playlist.descricao}</Text>
+        {playlist.genero && <Text>Genero: {playlist.genero}</Text> }
+        {playlist.descricao && <Text>Descrição: {playlist.descricao}</Text> }
       </View>
 
       <View style={styles.actions}>
@@ -62,6 +62,7 @@ export const PlaylistItem = ( { playlist, navigation, callback} : PlaylistItemPr
           text='Ver Playlists' 
           styleBtn={styles.btnView} 
           styleTxt={styles.btnText} 
+          onPress={() => navigation.navigate('VerPlaylist', {id: playlist.id })}
         />
         
         <Button 

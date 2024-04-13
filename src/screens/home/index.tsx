@@ -1,4 +1,7 @@
-import { View, Text, FlatList, Button } from 'react-native'
+import { Button, Image, Text, View } from 'react-native'
+import { styles } from './styles'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import logo from '../../assets/vgl-logo.png'
 
 
 type Props = {
@@ -8,13 +11,23 @@ type Props = {
 export const Home = ({ navigation }: Props) => {
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <KeyboardAwareScrollView style={styles.container}>
+
+      <View style={styles.wrapperLogo}>
+        <Image 
+          source={require('../../assets/vgl-logo.png')} 
+          style={styles.logo}
+        />
+        <Text style={styles.welcome}>Seja Bem Vindo!</Text>
+      </View>
+    
+      <View style={styles.resume}>
+        <Text style={styles.resumeText}>
+          Gerencie Playlists e salve suas músicas favoritas.
+          Busque músicas e adicione na playlist desejada!
+        </Text>
+      </View>
      
-     <Button
-        title="Ver playlists"
-        onPress={() => navigation.navigate('Playlist')}
-      />
-     
-    </View>
+    </KeyboardAwareScrollView>
   )
 }

@@ -2,16 +2,17 @@ import React from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MenuBottom } from './MenuBottom';
-import { CreateMusic } from '../screens/musicas/create';
+import { VerMusica } from '../screens/musicas/view';
 import { Store } from '../screens/playlists/store';
 import { headerCustom } from  './headerCustom'
-import Header from '../components/Header';
+import { VerPlaylist } from '../screens/playlists/view';
 
 
 export type RouteParamList = {
   Root: undefined
-  CreateMusic: undefined
+  VerMusica: { id: string  } 
   StorePlayList: { id: string  } 
+  VerPlaylist: { id: string  } 
 }
 
 const Stack = createNativeStackNavigator<RouteParamList>();
@@ -25,16 +26,14 @@ export default function Routes() {
           component={MenuBottom}
           options={{ 
             headerShown: false,
-            header: () => <Header />
           }}
-          
         />
         
         <Stack.Screen 
-          name="CreateMusic" 
-          component={CreateMusic} 
+          name="VerMusica" 
+          component={VerMusica} 
           options={{
-            title: 'Criar Música',
+            title: 'Musica',
             ...headerCustom
           }}
         />
@@ -44,6 +43,15 @@ export default function Routes() {
           component={Store}
           options={{
             title: 'Criar Playlists',
+            ...headerCustom
+          }}
+        />
+        
+        <Stack.Screen 
+          name="VerPlaylist" 
+          component={VerPlaylist}
+          options={{
+            title: 'Playlist',
             ...headerCustom
           }}
         />
