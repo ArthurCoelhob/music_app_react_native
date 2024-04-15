@@ -1,5 +1,3 @@
-# Vagalume Clone
-Vídeo está na pasta "demonstracao", na raiz do projeto
 
 ### Rodando o projeto
     ** Para rodar o projeto, use Node na versão >=18
