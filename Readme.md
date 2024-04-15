@@ -1,4 +1,5 @@
 # Vagalume Clone
+Vídeo está na pasta "demonstracao", na raiz do projeto
 
 ### Rodando o projeto
     ** Para rodar o projeto, use Node na versão >=18
@@ -17,3 +18,5 @@ Olha a pasta `demonstracao` para ver o video do app rodando.
 
 #### TODO
 - remover musica da Playlist
+
+
