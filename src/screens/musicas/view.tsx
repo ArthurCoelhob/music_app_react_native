@@ -33,6 +33,7 @@ export const VerMusica = ({ navigation, route }: VerMusicaProps) => {
      <Text style={styles.viewTitle}>{content?.nameMusica}</Text>
      <Text style={styles.viewArt}>{content?.artista}</Text>
      <Text style={styles.viewContent}>{content?.contentMusica}</Text>
+     
     </KeyboardAwareScrollView>
   )
 }
